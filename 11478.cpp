@@ -4,28 +4,25 @@
 using namespace std;
 
 //string class의 substr()으로 부분 문자열 추출 가능하다.
-void make_sub(int len, string str, int &ans) {
-    string sub;
-    set<string> s;
-    for (int i = 0; i < str.length() - len + 1; i++) {
-        sub = str.substr(i, len);
-        if (s.count(sub)) {
-            continue;
+int make_sub(string str, set<string> &s) {
+    int len = str.length();
+    for (int k = 1; k <= len; k++) {
+        string sub;
+        for (int i = 0; i < len - k + 1; i++) {
+            sub = str.substr(i, k);
+            s.insert(sub);
         }
-        ans++;
-        s.insert(sub);
     }
-    return;
+
+    return s.size();
 }
 
 int main() {
-    int ans = 0;
     string str;
+    set<string> s;
     cin >> str;
-    for (int i = 1; i <= str.length(); i++) {
-        make_sub(i, str, ans);
-    }
-    cout << ans;
+    cout << make_sub(str, s);
+
     return 0;
 }
 

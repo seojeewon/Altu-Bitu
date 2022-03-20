@@ -43,11 +43,7 @@ int main() {
         cin >> n;
         for (int i = 0; i < n; i++) {
             cin >> s >> kind;
-            if (m.count(kind)) {
-                m[kind]++;
-            } else {
-                m[kind] = 1;
-            }
+            m[kind]++;
         }
         vector<pair<string,int>> v(m.begin(), m.end());
         cout << combination(v) << '\n';
